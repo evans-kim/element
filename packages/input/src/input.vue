@@ -25,6 +25,7 @@
         v-if="type !== 'textarea'"
         class="el-input__inner"
         v-bind="$attrs"
+        v-on="$listeners"
         :type="showPassword ? (passwordVisible ? 'text': 'password') : type"
         :disabled="inputDisabled"
         :readonly="readonly"
@@ -343,7 +344,6 @@
       handleInput(event) {
         // should not emit input during composition
         // see: https://github.com/ElemeFE/element/issues/10516
-        if (this.isComposing) return;
 
         // hack for https://github.com/ElemeFE/element/issues/8548
         // should remove the following line when we don't support IE
